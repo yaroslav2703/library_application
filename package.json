@@ -1,0 +1,8 @@
+{
+  "name": "app",
+  "version": "0.0.0",
+  "scripts": {
+    "build:prod": "cd ./frontend && npm install && npm run build:production && rm -rf ./node_modules && cd ../backend && npm install",
+    "start:prod": "cd ./backend && npm run start:prod"
+  }
+}

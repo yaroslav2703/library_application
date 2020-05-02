@@ -1,0 +1,27 @@
+{
+  "name": "library_application-backend",
+  "version": "1.0.0",
+  "description": "Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=localhost nodemon ./server.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon ./server.js",
+    "start:prod": "cross-env NODE_ENV=production nodemon ./server.js"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "private": true,
+  "author": "Yaroslav Pitsukha",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.11"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.1",
+    "nodemon": "^2.0.3"
+  }
+}
