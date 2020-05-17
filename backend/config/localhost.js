@@ -8,16 +8,6 @@ module.exports = {
         transactions: false,
     },
 
-    email: {
-        comment: 'See https://nodemailer.com',
-        from: 'yaroslav.pitsukha@gmail.com',
-        host: null,
-        auth: {
-            user: null,
-            pass: null,
-        },
-    },
-
     graphiql: true,
 
     clientUrl: 'http://localhost:8081',

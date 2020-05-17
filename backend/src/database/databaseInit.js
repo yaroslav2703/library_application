@@ -1,31 +1,21 @@
-const mongoose = require('./database');
+const mongoose = require('mongoose');
 const config = require('../../config')();
 
-const init = async () => {
-    if (!mongoose.connection.readyState) {
-        return mongoose
-            .connect(config.database.connection, {
+module.exports =  async (req, res, next) => {
+    try{
+        if (!mongoose.connection.readyState) {
+             await mongoose.connect(config.database.connection,
+            {
                 useNewUrlParser: true,
                 useFindAndModify: false,
                 useUnifiedTopology: true,
-            })
-            .then(() => console.log('MongoDB connected'))
-            .then(() => mongoose);
-    }
-
-    return mongoose;
-};
-
-const middleware = async (req, res, next) => {
-    try{
-        await init();
+                useCreateIndex: true
+            }).then(() => console.log('MongoDB connected'))
+        }
     } catch (error) {
-        console.error(error);
+        console.error('Server Error', error.message);
         res.sendStatus(500);
         return;
     }
     return next();
 };
-
-exports.init = init;
-exports.middleware = middleware;

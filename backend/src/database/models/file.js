@@ -1,4 +1,4 @@
-const database = require('../database');
+const database = require('mongoose');
 const Schema = database.Schema;
 
 const FileSchema = new Schema(
