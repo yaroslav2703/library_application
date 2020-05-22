@@ -11,6 +11,10 @@ app.use(bodyParser.json());
 
 const routes = express.Router();
 require('./auth')(routes);
+require('./users')(routes);
+require('./books')(routes);
+require('./loans')(routes);
+require('./profile')(routes);
 app.use('/api', routes);
 
 const frontendDir = path.join(
