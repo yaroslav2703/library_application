@@ -11,7 +11,7 @@ const UserSchema = new Schema(
         password: { type: String, maxlength: 255, required: true },
         disabled: { type: Boolean, default: false },
         avatars: [FileSchema],
-        roles: [{ type: String, required: true }],
+        role: { type: String, required: true },
         loans: [{ type: Schema.Types.ObjectID, ref: 'Loans' }],
         createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
         updatedBy: { type: Schema.Types.ObjectId, ref: 'User' }

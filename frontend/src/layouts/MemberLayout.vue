@@ -11,10 +11,10 @@
 </template>
 
 <script>
-    import Navbar from "@/components/app/Navbar";
-    import Sidebar from "@/components/app/Sidebar";
+    import Navbar from "@/components/app/member/Navbar";
+    import Sidebar from "@/components/app/member/Sidebar";
     export default {
-        name: "MainLayout",
+        name: "MemberLayout",
         data:() => ({
             isOpen: true
         }),

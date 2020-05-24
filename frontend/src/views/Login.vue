@@ -61,7 +61,6 @@
     import messages from "../utils/messages";
     import requests from "../utils/requests";
     import auth from "../utils/auth";
- //   import authContext from "../context/AuthContext"
 
     export default {
         name: "Login.vue",
@@ -92,8 +91,14 @@
                     const responce = await requests.request('/api/auth/login', 'POST', formData);
                     this.$message(responce.message);
                     if (responce.message === 'Пользователь успешно найден') {
-                       auth.login(responce.token, responce.userId);
-                        await this.$router.push('/')
+                       auth.login(responce.token, responce.userId, responce.userRole);
+                       let role = auth.CheckRole();
+                       if (role === 'member'){
+                           await this.$router.push('/m/')
+                       }
+                       else if (role === 'librarian'){
+                           await this.$router.push('/l/')
+                       }
                     }
 
                 }catch (e) {

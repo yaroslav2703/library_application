@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-//import auth from '@/utils/auth'
+import auth from '@/utils/auth'
 
 Vue.use(Router);
 
@@ -9,10 +9,16 @@ const router = new Router({
       base: process.env.BASE_URL,
       routes: [
             {
-                  path: '/',
-                  name: 'start',
-                  meta: {layout: 'main', auth: true},
-                  component: () => import('./views/Loans.vue')
+                  path: '/m/',
+                  name: 'm-start',
+                  meta: {layout: 'member', auth: true, role: 'member'},
+                  component: () => import('./views/member/Loans.vue')
+            },
+            {
+                  path: '/l/',
+                  name: 'l-start',
+                  meta: {layout: 'librarian', auth: true, role: 'librarian'},
+                  component: () => import('./views/librarian/Loans.vue')
             },
             {
                   path: '/login',
@@ -27,42 +33,77 @@ const router = new Router({
                   component: () => import('./views/Register.vue')
             },
             {
-                  path: '/books',
-                  name: 'books',
-                  meta: {layout: 'main', auth: true},
-                  component: () => import('./views/Books.vue')
+                  path: '/m/books',
+                  name: 'm-books',
+                  meta: {layout: 'member', auth: true, role: 'member'},
+                  component: () => import('./views/member/Books.vue')
             },
             {
-                  path: '/loans',
-                  name: 'loans',
-                  meta: {layout: 'main', auth: true},
-                  component: () => import('./views/Loans.vue')
+                  path: '/l/books',
+                  name: 'l-books',
+                  meta: {layout: 'librarian', auth: true, role: 'librarian'},
+                  component: () => import('./views/librarian/Books.vue')
             },
             {
-                  path: '/users',
-                  name: 'users',
-                  meta: {layout: 'main', auth: true},
-                  component: () => import('./views/Users.vue')
+                  path: '/m/loans',
+                  name: 'm-loans',
+                  meta: {layout: 'member', auth: true, role: 'member'},
+                  component: () => import('./views/member/Loans.vue')
             },
             {
-                  path: '/profile',
-                  name: 'profile',
-                  meta: {layout: 'main', auth: true},
-                  component: () => import('./views/Profile.vue')
+                  path: '/l/loans',
+                  name: 'l-loans',
+                  meta: {layout: 'librarian', auth: true, role: 'librarian'},
+                  component: () => import('./views/librarian/Loans.vue')
+            },
+            {
+                  path: '/l/users',
+                  name: 'l-users',
+                  meta: {layout: 'librarian', auth: true, role: 'librarian'},
+                  component: () => import('./views/librarian/Users.vue')
+            },
+            {
+                  path: '/m/profile',
+                  name: 'm-profile',
+                  meta: {layout: 'member', auth: true, role: 'member'},
+                  component: () => import('./views/member/Profile.vue')
+            },
+            {
+                  path: '/l/profile',
+                  name: 'l-profile',
+                  meta: {layout: 'librarian', auth: true, role: 'librarian'},
+                  component: () => import('./views/librarian/Profile.vue')
             }
       ]
 });
-/*
+
 router.beforeEach((to, from, next) => {
 
       const requireAuth = to.matched.some(record => record.meta.auth);
 
       if (requireAuth && !auth.Check()) {
-            next('/login?message=login')
+            next('/login?message=login');
       }
       else {
-            next()
+            const role = to.meta.role;
+            const name = to.name;
+            if ((name === 'login') || (name === 'register')){
+                  next()
+            }
+            else if (auth.Check()) {
+                  if (role === auth.CheckRole()){
+                        console.log(name);
+                        next()
+                  }
+                  else{
+                        next('/login');
+                  }
+
+            }
+            else{
+                  next('/login');
+            }
       }
 });
-*/
+
 export default router

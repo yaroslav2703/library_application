@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
             {expiresIn: '1h'}
         );
 
-        await res.json({message: 'Пользователь успешно найден', token, userId: user.id})
+        await res.json({message: 'Пользователь успешно найден', token, userId: user.id, userRole: user.role})
 
     }catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
