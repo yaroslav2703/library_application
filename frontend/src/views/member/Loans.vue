@@ -4,10 +4,7 @@
             <h3>Аренда книг</h3>
         </div>
         <div>
-            <button class="btn waves-effect waves-light" type="submit">
-                Добавить
-                <i class="material-icons right">add</i>
-            </button>
+
         </div>
         <div class="container">
             <form>
@@ -110,12 +107,6 @@
                             <a class="waves-effect waves-teal btn-flat">
                                 <i class="material-icons">visibility</i>
                             </a>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">create</i>
-                            </a>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">clear</i>
-                            </a>
                         </td>
                     <tr>
                         <td></td>
@@ -128,12 +119,6 @@
                         <td>
                             <a class="waves-effect waves-teal btn-flat">
                                 <i class="material-icons">visibility</i>
-                            </a>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">create</i>
-                            </a>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">clear</i>
                             </a>
                         </td>
                     </tr>
@@ -148,12 +133,6 @@
                         <td>
                             <a class="waves-effect waves-teal btn-flat">
                                 <i class="material-icons">visibility</i>
-                            </a>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">create</i>
-                            </a>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">clear</i>
                             </a>
                         </td>
                     </tr>

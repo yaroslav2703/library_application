@@ -39,6 +39,12 @@ const router = new Router({
                   component: () => import('./views/member/Books.vue')
             },
             {
+                  path: '/l/books/add',
+                  name: 'l-books-add',
+                  meta: {layout: 'librarian', auth: true, role: 'librarian'},
+                  component: () => import('./views/librarian/AddBook.vue')
+            },
+            {
                   path: '/l/books',
                   name: 'l-books',
                   meta: {layout: 'librarian', auth: true, role: 'librarian'},
@@ -92,7 +98,6 @@ router.beforeEach((to, from, next) => {
             }
             else if (auth.Check()) {
                   if (role === auth.CheckRole()){
-                        console.log(name);
                         next()
                   }
                   else{

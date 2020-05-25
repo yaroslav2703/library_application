@@ -14,16 +14,7 @@ module.exports = async (req, res) => {
 
         const {isbn} = req.body;
 
-        const book = await Book.findOne({isbn});
-
-        if(!book) {
-            return res.status(400).json({ message: 'Книга не найдена'})
-        }
-
-
-        await Book.delete({isbn});
-
-        await book.save();
+        await Book.deleteOne({isbn});
 
         res.status(200).json({message: 'Книга удалена'})
 

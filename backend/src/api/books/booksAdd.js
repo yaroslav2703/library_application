@@ -20,7 +20,14 @@ module.exports = async (req, res) => {
             return res.status(400).json({ message: 'Такая книга уже имеется'})
         }
 
-        const book = new Book({ isbn, title, author, numberOfCopies });
+        let book = null;
+        if (numberOfCopies === 0){
+            book = new Book({ isbn, title, author, numberOfCopies, status: "unavailable" });
+        }
+        else {
+            book = new Book({ isbn, title, author, numberOfCopies, status: "available" });
+        }
+
 
         await book.save();
 

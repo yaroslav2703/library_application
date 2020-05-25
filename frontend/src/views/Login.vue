@@ -73,6 +73,9 @@
             password: {required, minLength: minLength(6)}
         },
         mounted() {
+            if (this.$route.query.message === 'books') {
+                this.$router.push('/l/books');
+            }
             if (messages[this.$route.query.message]) {
                 this.$message(messages[this.$route.query.message])
             }

@@ -4,10 +4,12 @@
             <h3>Книги</h3>
         </div>
         <div>
-            <button class="btn waves-effect waves-light" type="submit">
+            <router-link to="/l/books/add" class="white-text">
+                <button class="btn waves-effect waves-light" type="button">
                 Добавить
                 <i class="material-icons right">add</i>
-            </button>
+                </button>
+            </router-link>
         </div>
         <div class="container">
             <form>
@@ -58,7 +60,7 @@
                         </button>
                     </div>
                     <div class="col s2 m2">
-                        <button class="btn waves-effect waves-light" type="submit">
+                        <button class="btn waves-effect waves-light" type="reset">
                             Сброс
                             <i class="material-icons right">refresh</i>
                         </button>
@@ -67,85 +69,18 @@
             </form>
         </div>
         <div class="divider"></div>
-        <div>
-            <div class="table-of-contents">
-                <table class="highlight centered responsive-table">
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th>ISBN</th>
-                        <th>Название</th>
-                        <th>Автор</th>
-                        <th>Статус</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td></td>
-                        <td>53774</td>
-                        <td>Рожь</td>
-                        <td>Пушкин</td>
-                        <td>Доступна</td>
-                        <td>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">visibility</i>
-                            </a>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">create</i>
-                            </a>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">clear</i>
-                            </a>
-                        </td>
-                    <tr>
-                        <td></td>
-                        <td>53774</td>
-                        <td>Рожь</td>
-                        <td>Пушкин</td>
-                        <td>Доступна</td>
-                        <td>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">visibility</i>
-                            </a>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">create</i>
-                            </a>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">clear</i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>53774</td>
-                        <td>Рожь</td>
-                        <td>Пушкин</td>
-                        <td>Доступна</td>
-                        <td>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">visibility</i>
-                            </a>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">create</i>
-                            </a>
-                            <a class="waves-effect waves-teal btn-flat">
-                                <i class="material-icons">clear</i>
-                            </a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div>
-            </div>
-        </div>
+        <Table/>
+
     </div>
 </template>
 
 <script>
+    import Table from "@/components/app/librarian/books/Table";
     export default {
-        name: "Books"
+        name: "Books",
+        components: {
+            Table
+        }
     }
 </script>
 

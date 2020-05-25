@@ -13,6 +13,7 @@ export default {
                 headers,
                 body
             });
+
             return response.json()
         }catch (e) {
             console.warn('Error:', e.message)

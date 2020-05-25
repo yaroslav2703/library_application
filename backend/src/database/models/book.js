@@ -8,12 +8,10 @@ const BookSchema = new Schema(
         title: { type: String, required: true, maxlength: 255 },
         author: { type: String, required: true, maxlength: 255 },
         numberOfCopies: { type: Number, required: true, min: 1 },
-        stock: { type: Number },
         images: [FileSchema],
-        status: { type: String, enum: [ "available", "unavailable", null ] },
+        status: { type: String, required: true, enum: [ "available", "unavailable", null ] },
         createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
-        updatedBy: { type: Schema.Types.ObjectId, ref: 'User' },
-        importHash: { type: String }
+        updatedBy: { type: Schema.Types.ObjectId, ref: 'User' }
     },
     { timestamps: true },
 );

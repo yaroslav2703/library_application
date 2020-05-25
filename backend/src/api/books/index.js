@@ -1,6 +1,11 @@
 const {check} = require('express-validator');
 
 module.exports = (app) => {
+    app.get(
+        '/books/get',
+        require('./booksGet')
+    );
+
     app.post(
         '/books/add',
         [
@@ -17,6 +22,6 @@ module.exports = (app) => {
         [
             check('isbn', 'Введите isbn').exists()
         ],
-        require('./booksAdd')
-    )
+        require('./booksDelete')
+    );
 };
