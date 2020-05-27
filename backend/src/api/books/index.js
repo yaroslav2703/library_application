@@ -7,6 +7,11 @@ module.exports = (app) => {
     );
 
     app.post(
+        '/books/filter',
+        require('./booksFilter')
+    );
+
+    app.post(
         '/books/add',
         [
             check('isbn', 'Введите isbn').exists(),

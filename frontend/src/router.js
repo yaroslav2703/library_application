@@ -63,6 +63,12 @@ const router = new Router({
                   component: () => import('./views/librarian/Loans.vue')
             },
             {
+                  path: '/l/users/add',
+                  name: 'l-users-add',
+                  meta: {layout: 'librarian', auth: true, role: 'librarian'},
+                  component: () => import('./views/librarian/AddUsers.vue')
+            },
+            {
                   path: '/l/users',
                   name: 'l-users',
                   meta: {layout: 'librarian', auth: true, role: 'librarian'},

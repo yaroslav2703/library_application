@@ -45,15 +45,7 @@
 
     export default {
         name: "table",
-        data() {
-            return {
-                books: null
-            };
-        },
-        async mounted() {
-            const response = await requests.request('/api/books/get');
-            this.books = response.books;
-        },
+        props: ['books'],
         methods: {
             async deleteHandler(isbn) {
                 const formData = {

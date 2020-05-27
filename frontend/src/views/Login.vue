@@ -76,6 +76,9 @@
             if (this.$route.query.message === 'books') {
                 this.$router.push('/l/books');
             }
+            else if (this.$route.query.message === 'users') {
+                this.$router.push('/l/users');
+            }
             if (messages[this.$route.query.message]) {
                 this.$message(messages[this.$route.query.message])
             }

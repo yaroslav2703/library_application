@@ -1,15 +1,7 @@
 <template>
     <div>
         <div class="page-title">
-            <h3>Пользователи</h3>
-        </div>
-        <div>
-            <router-link to="/l/users/add" class="white-text">
-                <button class="btn waves-effect waves-light" type="button">
-                    Добавить
-                    <i class="material-icons right">add</i>
-                </button>
-            </router-link>
+            <h3>Новая книга</h3>
         </div>
         <div class="container">
             <form @submit.prevent="submitHandler">
@@ -23,7 +15,7 @@
                                     :class="{invalid: ($v.email.$dirty && !$v.email.required) ||
                                                         ($v.email.$dirty && !$v.email.email)}"
                             >
-                            <label for="email">электронная почта</label>
+                            <label for="email">email</label>
                             <small
                                     class="helper-text invalid"
                                     v-if="$v.email.$dirty && !$v.email.required"
@@ -35,40 +27,63 @@
                         </div>
                         <div class="input-field">
                             <input
-                                    id="status"
-                                    type="text"
-                                    v-model.trim="status"
-                            >
-                            <label for="status">статус</label>
-                            <span class="helper-text invalid">Введите статус</span>
-                        </div>
-                    </div>
-                    <div class="col s3 m6">
-                        <div class="input-field">
-                            <input
-                                    id="name"
+                                    id="firstName"
                                     type="text"
                                     v-model.trim="firstName"
+                                    :class="{invalid: ($v.firstName.$dirty && !$v.firstName.required)}"
                             >
-                            <label for="name">фамилия и имя</label>
-                            <span class="helper-text invalid">Введите фамилию и имя </span>
+                            <label for="firstName">имя</label>
+                            <small
+                                    class="helper-text invalid"
+                                    v-if="$v.firstName.$dirty && !$v.firstName.required"
+                            >Поле не должно быть пустым</small>
+                        </div>
+                        <div class="input-field">
+                            <input
+                                    id="secondName"
+                                    type="text"
+                                    v-model.trim="secondName"
+                                    :class="{invalid: ($v.secondName.$dirty && !$v.secondName.required)}"
+                            >
+                            <label for="secondName">фамилия</label>
+                            <small
+                                    class="helper-text invalid"
+                                    v-if="$v.secondName.$dirty && !$v.secondName.required"
+                            >Поле не должно быть пустым</small>
+                        </div>
+                        <div class="input-field">
+                            <input
+                                    id="phoneNumber"
+                                    type="text"
+                                    v-model.trim="phoneNumber"
+                                    :class="{invalid: ($v.phoneNumber.$dirty && !$v.phoneNumber.required)}"
+                            >
+                            <label for="phoneNumber">номер телефона</label>
+                            <small
+                                    class="helper-text invalid"
+                                    v-if="$v.phoneNumber.$dirty && !$v.phoneNumber.required"
+                            >Поле не должно быть пустым</small>
                         </div>
                         <div class="input-field">
                             <input
                                     id="role"
                                     type="text"
                                     v-model.trim="role"
+                                    :class="{invalid: ($v.role.$dirty && !$v.role.required)}"
                             >
                             <label for="role">роль</label>
-                            <span class="helper-text invalid">Введите роль</span>
+                            <small
+                                    class="helper-text invalid"
+                                    v-if="$v.role.$dirty && !$v.role.required"
+                            >Поле не должно быть пустым</small>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s2 m2 offset-s8 offset-m8">
+                    <div class="col s2 m2 offset-s2 offset-m2">
                         <button class="btn waves-effect waves-light" type="submit">
-                            Поиск
-                            <i class="material-icons right">search</i>
+                            Сохранить
+                            <i class="material-icons right">save</i>
                         </button>
                     </div>
                     <div class="col s2 m2">
@@ -80,39 +95,34 @@
                 </div>
             </form>
         </div>
-        <div class="divider"></div>
-        <Table v-bind:users="users"/>
     </div>
 </template>
 
 <script>
-    import Table from "@/components/app/librarian/users/Table";
-    import {email} from "vuelidate/lib/validators";
+    import {email, required} from "vuelidate/lib/validators";
     import messages from "@/utils/messages";
     import requests from "../../utils/requests";
 
     export default {
-        name: "Users",
-        data: () => ({
-            email: null,
-            status: null,
-            firstName: null,
-            secondName: null,
-            role: null,
-            users: null
+        name: "AddUsers",
+        data : () => ({
+            email: '',
+            firstName: '',
+            secondName: '',
+            phoneNumber: '',
+            role: ''
         }),
-        components: {
-            Table
-        },
         validations: {
-            email: {email}
+            email: {email, required},
+            firstName: {required},
+            secondName: {required},
+            phoneNumber: {required},
+            role: {required}
         },
-        async created() {
+        mounted() {
             if (messages[this.$route.query.message]) {
                 this.$message(messages[this.$route.query.message])
             }
-            const response = await requests.request('/api/users/get');
-            this.users = response.users;
         },
         methods: {
             async submitHandler() {
@@ -126,28 +136,19 @@
                 else if (this.role === 'библиотекарь') {
                     this.role = 'librarian'
                 }
-                if (this.status === 'активный') {
-                    this.status = false
-                }
-                else if (this.status === 'заблокирован') {
-                    this.status = true
-                }
-                if (this.firstName !== null) {
-                    const arrayOfStrings = this.firstName.split(' ');
-                    this.firstName = String(arrayOfStrings[1]);
-                    this.secondName = String(arrayOfStrings[0]);
-                }
                 const formData = {
                     email: this.email,
-                    disabled: this.status,
                     firstName: this.firstName,
-                    lastName: this.secondName,
-                    role: this.role,
+                    secondName: this.secondName,
+                    phoneNumber: this.phoneNumber,
+                    role: this.role
                 };
                 try {
-                    const responce = await requests.request('/api/users/filter', 'POST', formData);
-                    this.users = responce.users;
+                    const responce = await requests.request('/api/users/add', 'POST', formData);
                     this.$message(responce.message);
+                    if (responce.message === 'Пользователь добавлен') {
+                        await this.$router.push('/l/users')
+                    }
                 } catch (e) {
                     console.log(e.message)
                 }
