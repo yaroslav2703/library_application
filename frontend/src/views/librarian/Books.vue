@@ -41,7 +41,6 @@
                                     v-model.trim="author"
                             >
                             <label for="author">автор</label>
-                            <span class="helper-text invalid">Введите автора</span>
                         </div>
                     </div>
                     <div class="col s3 m6">
@@ -52,7 +51,6 @@
                                     v-model.trim="title"
                             >
                             <label for="title">название</label>
-                            <span class="helper-text invalid">Введите название</span>
                         </div>
                         <div class="input-field">
                             <input
@@ -61,7 +59,6 @@
                                     v-model.trim="status"
                             >
                             <label for="status">статус</label>
-                            <span class="helper-text invalid">Выберите статус</span>
                         </div>
                     </div>
                 </div>

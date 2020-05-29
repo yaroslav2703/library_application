@@ -29,6 +29,11 @@ export default {
         CheckRole() {
             const data = JSON.parse(localStorage.getItem(storageName));
             return data.userRole;
+        },
+
+        GetId() {
+            const data = JSON.parse(localStorage.getItem(storageName));
+            return data.userId;
         }
 
 }

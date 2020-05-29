@@ -57,6 +57,18 @@ const router = new Router({
                   component: () => import('./views/member/Loans.vue')
             },
             {
+                  path: '/l/loans/update',
+                  name: 'l-loans-update',
+                  meta: {layout: 'librarian', auth: true, role: 'librarian'},
+                  component: () => import('./views/librarian/UpdateLoans.vue')
+            },
+            {
+                  path: '/l/loans/add',
+                  name: 'l-loans-add',
+                  meta: {layout: 'librarian', auth: true, role: 'librarian'},
+                  component: () => import('./views/librarian/AddLoans.vue')
+            },
+            {
                   path: '/l/loans',
                   name: 'l-loans',
                   meta: {layout: 'librarian', auth: true, role: 'librarian'},

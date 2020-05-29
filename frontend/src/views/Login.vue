@@ -73,7 +73,10 @@
             password: {required, minLength: minLength(6)}
         },
         mounted() {
-            if (this.$route.query.message === 'books') {
+            if (this.$route.query.message === 'loans') {
+                this.$router.push('/l/loans');
+            }
+            else if (this.$route.query.message === 'books') {
                 this.$router.push('/l/books');
             }
             else if (this.$route.query.message === 'users') {

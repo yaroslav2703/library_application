@@ -14,7 +14,7 @@
         data: () => ({
                 links: [
                     {title: 'Пользователи', url: '/l/users'},
-                    {title: 'Займы', url: '/l/loans'},
+                    {title: 'Выдача книг', url: '/l/loans'},
                     {title: 'Книги', url: '/l/books'},
                 ]
             })

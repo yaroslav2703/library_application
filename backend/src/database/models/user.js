@@ -1,6 +1,5 @@
 const database = require('mongoose');
 const Schema = database.Schema;
-const { FileSchema } = require('./file');
 
 const UserSchema = new Schema(
     {
@@ -10,7 +9,6 @@ const UserSchema = new Schema(
         email: { type: String, maxlength: 255, required: true, unique: true },
         password: { type: String, maxlength: 255, required: true },
         disabled: { type: Boolean, default: false },
-        avatars: [FileSchema],
         role: { type: String, required: true },
         loans: [{ type: Schema.Types.ObjectID, ref: 'Loans' }],
         createdBy: { type: Schema.Types.ObjectId, ref: 'User' },

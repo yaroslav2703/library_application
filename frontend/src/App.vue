@@ -10,6 +10,7 @@
   import EmptyLayout from './layouts/EmptyLayout';
   import LibrarianLayout from "./layouts/LibrarianLayout";
   import MemberLayout from "./layouts/MemberLayout";
+
   export default {
     computed: {
       layout() {

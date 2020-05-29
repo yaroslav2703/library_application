@@ -8,10 +8,9 @@ const LoanSchema = new Schema(
         issueDate: { type: Date, required: true },
         dueDate: { type: Date, required: true },
         returnDate: { type: Date },
-        status: { type: String, enum: [ "inProgress", "overdue", "closed", null ] },
+        status: { type: String, enum: [ "inProgress", "overdue", "closed" ] },
         createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
-        updatedBy: { type: Schema.Types.ObjectId, ref: 'User' },
-        importHash: { type: String }
+        updatedBy: { type: Schema.Types.ObjectId, ref: 'User' }
     },
     { timestamps: true },
 );

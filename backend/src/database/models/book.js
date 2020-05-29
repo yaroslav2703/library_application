@@ -1,15 +1,13 @@
 const database = require('mongoose');
 const Schema = database.Schema;
-const { FileSchema } = require('./file');
 
 const BookSchema = new Schema(
     {
-        isbn: { type: String, required: true, minlength: 13, maxlength: 13 },
+        isbn: { type: String, required: true, minlength: 13, maxlength: 13, unique: true },
         title: { type: String, required: true, maxlength: 255 },
         author: { type: String, required: true, maxlength: 255 },
         numberOfCopies: { type: Number, required: true, min: 1 },
-        images: [FileSchema],
-        status: { type: String, required: true, enum: [ "available", "unavailable", null ] },
+        status: { type: String, required: true, enum: [ "available", "unavailable"] },
         createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
         updatedBy: { type: Schema.Types.ObjectId, ref: 'User' }
     },

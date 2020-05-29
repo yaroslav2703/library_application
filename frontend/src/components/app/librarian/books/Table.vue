@@ -21,12 +21,6 @@
                     <td v-if="book.status === 'available'">есть в наличии</td>
                     <td v-else-if="book.status === 'unavailable'">нет в наличии</td>
                     <td>
-                        <a class="waves-effect waves-teal btn-flat">
-                            <i class="material-icons">visibility</i>
-                        </a>
-                        <a class="waves-effect waves-teal btn-flat">
-                            <i class="material-icons">create</i>
-                        </a>
                         <a class="waves-effect waves-teal btn-flat" @click.prevent="deleteHandler(book.isbn)">
                             <i class="material-icons">clear</i>
                         </a>

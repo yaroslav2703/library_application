@@ -40,7 +40,6 @@
                                     v-model.trim="status"
                             >
                             <label for="status">статус</label>
-                            <span class="helper-text invalid">Введите статус</span>
                         </div>
                     </div>
                     <div class="col s3 m6">
@@ -51,7 +50,6 @@
                                     v-model.trim="firstName"
                             >
                             <label for="name">фамилия и имя</label>
-                            <span class="helper-text invalid">Введите фамилию и имя </span>
                         </div>
                         <div class="input-field">
                             <input
@@ -60,7 +58,6 @@
                                     v-model.trim="role"
                             >
                             <label for="role">роль</label>
-                            <span class="helper-text invalid">Введите роль</span>
                         </div>
                     </div>
                 </div>

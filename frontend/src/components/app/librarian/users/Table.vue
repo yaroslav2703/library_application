@@ -23,9 +23,6 @@
                     <td v-else-if="user.disabled === true">заблокирован</td>
                     <td>
                         <a class="waves-effect waves-teal btn-flat">
-                            <i class="material-icons">visibility</i>
-                        </a>
-                        <a class="waves-effect waves-teal btn-flat">
                             <i class="material-icons">create</i>
                         </a>
                     </td>

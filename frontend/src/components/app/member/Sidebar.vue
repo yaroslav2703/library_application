@@ -13,7 +13,7 @@
         props: ['value'],
         data: () => ({
                 links: [
-                    {title: 'Займы', url: '/m/loans'},
+                    {title: 'Взятые книги', url: '/m/loans'},
                     {title: 'Книги', url: '/m/books'},
                 ]
             })
